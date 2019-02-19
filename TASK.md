@@ -1,4 +1,4 @@
-# "Komponentenbasierte Programmierung" - Taskdescription
+# Distributed Computing "Komponentenbasierte Programmierung" - Taskdescription
 
 ## Einführung
 Diese Übung zeigt die Anwendung von komponentenbasierter Programmierung mittels Webframeworks.
