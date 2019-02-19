@@ -19,7 +19,7 @@ Die Persistierung soll mittels der Java Persistence API (JPA) realisiert werden.
 
 Erstellen Sie von folgendem Modell Persistenzklassen und implementieren Sie diese mittels JPA:
 
-Westbahn Domänenmodell
+![Westbahn Domänenmodell](design/Westbahn.svg)
 
 Suche
 Die Suche nach Zügen muss auf jeden Fall die Auswahl des Abfahrts- und Ankunftsortes (nur folgende Bahnhöfe sind möglich: Wien Westbhf, Wien Hütteldorf, St. Pölten, Amstetten, Linz, Wels, Attnang-Puchheim, Salzburg) ermöglichen. Dies führt zur Anzeige der möglichen Abfahrten, die zur Vereinfachung an jedem Tag zur selben Zeit stattfinden. Des weiteren wird auch die Dauer der Fahrt angezeigt.
