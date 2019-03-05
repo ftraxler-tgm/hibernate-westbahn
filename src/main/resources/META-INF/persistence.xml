@@ -8,6 +8,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     <description> Hibernate JPA Configuration Example</description>
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+    <!-- TODO List all perstiting Classdefinitions -->
+
     <properties>
 <!--
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />

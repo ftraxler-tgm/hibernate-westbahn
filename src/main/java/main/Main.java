@@ -26,6 +26,7 @@ public class Main {
 
 	private static final Logger log = Logger.getLogger(Main.class);
 
+        // TODO Check PersistenceUnit Definition
 	private static EntityManagerFactory sessionFactory;
 	@PersistenceContext
 	private static EntityManager entitymanager;
