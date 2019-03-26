@@ -47,13 +47,45 @@ Dafür fügt man im **persistence.xml** File <class>model.Klassenname</class> hi
   </persistence-unit>
 ```
 
-Für folgende Klassen die Annotationen hinzufügen:
+#### Entities hinzufügen
+
+```java
+@Entity
+@NamedQueries({@NamedQuery(name="Benutzer.getAll",query="SELECT b from Benutzer b")})
+public class Benutzer {
+```
+
+* @Entity steht dafür das diese Klasse als Entität gesehen werden soll
+
+* @NamedQueries damit können wir in der Klammer eigene Queries definieren mit @NamedQuery
+
+#### Spalten hinzufügen
+
+```java
+@Id @GeneratedValue(strategy=GenerationType.AUTO)
+@Column(name="id")
+private Long ID;
+
+@Size(min=2,max=15)
+@Column(name="vorName",unique=true)
+private String vorName;
+```
+
+* @Id Daher weiß der EntityManager, dass es sich um eine ID handelt
+* @GeneratedValue Damit sich der Wert der ID vortlaufend erhöht
+* @Column Die Bezeichnung der Spalte in der DB
+* @Size Richtlinien für den String in dem Code darüber zum Beispiel mindestens 2 Zeichen lang und maximal 15 lang.
+
+Für folgende Klassen die **Entity** Annotationen hinzufügen:
 
 * Benutzer
 * Preisstaffelung
-* Reservierung
 * Ticket
 * Zug
+* Einzelticket
+* Zeitkarte
+* Strecke
+* Sonderangebot
 
 
 
