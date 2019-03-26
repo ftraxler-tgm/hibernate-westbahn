@@ -81,7 +81,7 @@ Gruppengrösse: 1 Person
 ## Abgabe
 Es ist eine Dokumentation im README.md zu führen. Die Durchführung der Übung ist mittels regelmäßigen Commits zu dokumentieren.
 
-## Quellen
+## Quellens
 * ["Hibernate Object/Relational Mapping"; JBoss; 19.02.2019](http://hibernate.org/orm/)
 * ["Hibernate ORM Documentation"; JBoss](http://hibernate.org/orm/documentation/)
 * ["Hibernate ORM 5.4 Quickstart"; JBoss; 19.02.2019](http://docs.jboss.org/hibernate/orm/5.4/quickstart/html_single/)

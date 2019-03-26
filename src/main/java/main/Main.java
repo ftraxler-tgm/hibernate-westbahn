@@ -6,11 +6,8 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.security.auth.login.Configuration;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -27,6 +24,7 @@ public class Main {
 	private static final Logger log = Logger.getLogger(Main.class);
 
         // TODO Check PersistenceUnit Definition
+	@PersistenceUnit
 	private static EntityManagerFactory sessionFactory;
 	@PersistenceContext
 	private static EntityManager entitymanager;

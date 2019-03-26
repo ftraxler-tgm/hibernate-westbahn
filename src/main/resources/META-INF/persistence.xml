@@ -10,6 +10,8 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
     <!-- TODO List all perstiting Classdefinitions -->
 
+
+
     <properties>
 <!--
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
