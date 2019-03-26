@@ -15,7 +15,10 @@ Um das Projekt als gradle Projekt zu initialisieren führen wir folgendes aus:
 gradle idea
 ```
 
+## Implementierung
+
 #### PersistentUnit Definition
+
 Dafür verwendet man die Annotation **@PersistenceUnit**:
 
 ```java
@@ -44,8 +47,14 @@ Dafür fügt man im **persistence.xml** File <class>model.Klassenname</class> hi
   </persistence-unit>
 ```
 
+Für folgende Klassen die Annotationen hinzufügen:
+
+* Benutzer
+* Preisstaffelung
+* Reservierung
+* Ticket
+* Zug
 
 
-## Implementierung
 
 ## Quellen
