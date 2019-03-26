@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({@NamedQuery(name="Bahnhof.getAll",query="SELECT b from Preisstaffelung b")})
+@NamedQueries({@NamedQuery(name="Preisstafflung.getAll",query="SELECT b from Preisstaffelung b")})
 public class Preisstaffelung {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
