@@ -24,7 +24,9 @@ public class Main {
 	private static final Logger log = Logger.getLogger(Main.class);
 
         // TODO Check PersistenceUnit Definition
-	@PersistenceUnit
+	@PersistenceUnit(
+			unitName = "westbahn"
+	)
 	private static EntityManagerFactory sessionFactory;
 	@PersistenceContext
 	private static EntityManager entitymanager;
@@ -49,9 +51,9 @@ public class Main {
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
 			log.setLevel(Level.OFF);
 			task02();
-			task02a();
-			task02b();
-			task02c();
+			//task02a();
+			//task02b();
+			//task02c();
 			log.setLevel(Level.ALL);
 			task03(entitymanager);
 		} catch (ParseException e) {
@@ -93,7 +95,7 @@ public class Main {
 			Bahnhof bhf = null;
 			if (b instanceof Bahnhof) {
 				bhf = (Bahnhof) b;
-				System.out.println("Bahnhof: " + bhf.getName());
+				System.out.println("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
 			}
 		}
 	}
