@@ -22,6 +22,7 @@ public class Sonderangebot {
 
 	private float preisNachlass = 0.5F;
 
+	@OneToOne
 	private Ticket tickets;
 
 }

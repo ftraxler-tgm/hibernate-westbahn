@@ -39,9 +39,12 @@ public class Benutzer {
 	private Long verbuchtePraemienMeilen;
 
 
+	@OneToMany
 	@Column(name="tickets")
 	private Ticket tickets;
 
+
+	@OneToMany
 	@Column(name="reservierungen")
 	private Reservierung[] reservierungen;
 

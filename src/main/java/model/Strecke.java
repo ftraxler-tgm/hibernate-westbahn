@@ -15,9 +15,11 @@ public class Strecke {
 	@Column(name="start")
 	private Bahnhof start;
 
+	@OneToOne
 	@Column(name ="bahnhof")
 	private Bahnhof bahnhof;
 
+	@OneToOne
 	@Column(name="ende")
 	private Bahnhof ende;
 

@@ -101,6 +101,18 @@ public class Main {
 	}
 
 	public static void task02a() throws ParseException {
+		Query q = entitymanager.createNamedQuery("Benutzer.getAll");
+
+		List<?> l = q.getResultList();
+
+		for (Object b: l) {
+			Benutzer ben=null;
+			if(b instanceof Benutzer) {
+				ben = (Benutzer) b;
+				System.out.println("Benutzer: "+ben);
+			}
+
+		}
 	}
 
 	public static void task02b() throws ParseException {

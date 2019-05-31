@@ -1,10 +1,7 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 public class Zug {
@@ -27,9 +24,12 @@ public class Zug {
 	@Column(name="rollStuhlPlaetze")
 	private int rollStuhlPlaetze = 10;
 
+
+	@OneToOne
 	@Column(name="start")
 	private Bahnhof start;
 
+	@OneToOne
 	@Column(name="ende")
 	private Bahnhof ende;
 

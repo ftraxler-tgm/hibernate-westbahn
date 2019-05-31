@@ -10,6 +10,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({@NamedQuery(name="Einzelticket.getAll",query="SELECT b from Einzelticket b")})
 public class Einzelticket extends Ticket {
 
+
 	@Column(name="ticketOption")
 	private TicketOption ticketOption;
 
