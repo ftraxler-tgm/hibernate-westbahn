@@ -12,15 +12,13 @@ public class Strecke {
 	@Column(name="ID")
 	private Long ID;
 
-	@Column(name="start")
+	@OneToOne
 	private Bahnhof start;
 
 	@OneToOne
-	@Column(name ="bahnhof")
 	private Bahnhof bahnhof;
 
 	@OneToOne
-	@Column(name="ende")
 	private Bahnhof ende;
 
 	public Strecke(){}

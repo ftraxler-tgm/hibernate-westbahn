@@ -40,13 +40,10 @@ public class Benutzer {
 	private Long verbuchtePraemienMeilen;
 
 
-	@OneToMany
-	@Column(name="tickets")
+	@Transient
 	private Ticket tickets;
 
 
-	@OneToMany
-	@Column(name="reservierungen")
 	private Reservierung[] reservierungen;
 
 
@@ -54,9 +51,12 @@ public class Benutzer {
 
 	}
 
-	public Benutzer(String nachName){
+	public Benutzer(String vorName,String nachName,String eMail,String passwort){
 		super();
+		this.vorName=vorName;
 		this.nachName=nachName;
+		this.eMail=eMail;
+		this.passwort=passwort;
 	}
 
 	public Long getID() {
@@ -138,11 +138,6 @@ public class Benutzer {
 				", vorName='" + vorName + '\'' +
 				", nachName='" + nachName + '\'' +
 				", eMail='" + eMail + '\'' +
-				", passwort='" + passwort + '\'' +
-				", smsNummer='" + smsNummer + '\'' +
-				", verbuchtePraemienMeilen=" + verbuchtePraemienMeilen +
-				", tickets=" + tickets +
-				", reservierungen=" + Arrays.toString(reservierungen) +
-				'}';
+				", passwort='" + passwort + '\''+"}";
 	}
 }

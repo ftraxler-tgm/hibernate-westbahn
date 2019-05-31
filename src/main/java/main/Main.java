@@ -80,6 +80,21 @@ public class Main {
 		for (Bahnhof b : list)
 			em.persist(b);
 		em.flush();
+
+
+
+		List<Benutzer> list2 = new ArrayList<Benutzer>();
+
+		list2.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234"));
+		list2.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234"));
+		list2.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234"));
+		list2.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234"));
+		list2.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234"));
+
+		for(Benutzer b:list2)
+			em.persist(b);
+		em.flush();
+
 		em.getTransaction().commit();
 	}
 
@@ -109,7 +124,7 @@ public class Main {
 			Benutzer ben=null;
 			if(b instanceof Benutzer) {
 				ben = (Benutzer) b;
-				System.out.println("Benutzer: "+ben.toString());
+				System.out.println(ben.toString());
 			}
 
 		}
