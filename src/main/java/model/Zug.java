@@ -95,4 +95,18 @@ public class Zug {
 	public void setEnde(Bahnhof ende) {
 		this.ende = ende;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Zug{" +
+				"ID=" + ID +
+				", startZeit=" + startZeit +
+				", sitzPlaetze=" + sitzPlaetze +
+				", fahrradStellplaetze=" + fahrradStellplaetze +
+				", rollStuhlPlaetze=" + rollStuhlPlaetze +
+				", start=" + start +
+				", ende=" + ende +
+				'}';
+	}
 }

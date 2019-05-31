@@ -50,12 +50,11 @@ public class Main {
 			fillDB(entitymanager);
 			task01();
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
-			log.setLevel(Level.OFF);
+			log.setLevel(Level.INFO);
 			task02();
 			task02a();
 			//task02b();
 			//task02c();
-			log.setLevel(Level.ALL);
 			task03(entitymanager);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -104,20 +103,37 @@ public class Main {
 		list3.add(new Zug(new Date(),80,6,3,list.get(1),list.get(0)));
 		list3.add(new Zug(new Date(),500,25,20,list.get(3),list.get(1)));
 		list3.add(new Zug(new Date(),800,30,25,list.get(0),list.get(1)));
-		list3.add(new Zug(new Date(),50,10,5,list.get(0),list.get(1)));
+		list3.add(new Zug(new Date(),50,10,5,list.get(4),list.get(0)));
 
 		for(Zug z:list3)
 			em.persist(z);
 		em.flush();
 
+		List<Strecke> list4 = new ArrayList<Strecke>();
+
+		list4.add(new Strecke(list.get(0),null,list.get(1)));
+		list4.add(new Strecke(list.get(1),null,list.get(0)));
+		list4.add(new Strecke(list.get(0),list.get(2),list.get(3)));
+		list4.add(new Strecke(list.get(4),null,list.get(0)));
+
+		for(Strecke str:list4)
+			em.persist(str);
+		em.flush();
 
 
-		Strecke strecke = new Strecke();
-		Zahlung zahlung = new Maestro();
+		List<Reservierung> list5 = new ArrayList<Reservierung>();
+
+		list5.add(new Reservierung(new Date(),null,list3.get(0),list4.get(0),list2.get(0),new Maestro()));
+		list5.add(new Reservierung(new Date(),null,list3.get(2),list4.get(1),list2.get(1),new Kreditkarte()));
+		list5.add(new Reservierung(new Date(),null,list3.get(5),list4.get(0),list2.get(3),new Maestro()));
+		list5.add(new Reservierung(new Date(),null,list3.get(0),list4.get(0),list2.get(2),new Kreditkarte()));
+		list5.add(new Reservierung(new Date(),null,list3.get(2),list4.get(1),list2.get(4),new Maestro()));
 
 
-		Reservierung rv = new Reservierung(new Date(),null,null,null,list2.get(0),zahlung);
-		em.persist(rv);
+		for (Reservierung r: list5) {
+			em.persist(r);
+
+		}
 		em.flush();
 
 		em.getTransaction().commit();
@@ -135,7 +151,7 @@ public class Main {
 			Bahnhof bhf = null;
 			if (b instanceof Bahnhof) {
 				bhf = (Bahnhof) b;
-				System.out.println("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
+				log.info("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
 			}
 		}
 
@@ -151,7 +167,7 @@ public class Main {
 			Benutzer ben=null;
 			if(b instanceof Benutzer) {
 				ben = (Benutzer) b;
-				System.out.println(ben.toString());
+				log.info(ben.toString());
 			}
 
 		}
@@ -163,7 +179,21 @@ public class Main {
 			Reservierung reservierung=null;
 			if(r instanceof Reservierung){
 				reservierung= (Reservierung) r;
-				System.out.println(reservierung.toString());
+				log.info(reservierung.toString());
+
+			}
+
+		}
+
+		List<?> l3;
+		Query q3 = entitymanager.createNamedQuery("Reservierung.getBenutzer");
+		q3.setParameter("eMail","ftraxler@student.tgm.ac.at");
+		l3 = q3.getResultList();
+		for (Object r: l3) {
+			Reservierung reservierung=null;
+			if(r instanceof Benutzer){
+				reservierung= (Reservierung) r;
+				log.info(reservierung.toString());
 
 			}
 

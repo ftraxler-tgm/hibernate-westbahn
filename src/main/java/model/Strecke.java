@@ -60,4 +60,14 @@ public class Strecke {
 	public void setEnde(Bahnhof ende) {
 		this.ende = ende;
 	}
+
+	@Override
+	public String toString() {
+		return "Strecke{" +
+				"ID=" + ID +
+				", start=" + start +
+				", bahnhof=" + bahnhof +
+				", ende=" + ende +
+				'}';
+	}
 }

@@ -7,6 +7,9 @@
     <named-query name="Reservierung.getAll">
         <query>SELECT r FROM Reservierung r</query>
     </named-query>
+    <named-query name="Reservierung.getBenutzer">
+        <query>from Reservierung r where r.benutzer.eMail= :eMail</query>
+    </named-query>
 
     <entity class="model.Reservierung" name="Reservierung">
 

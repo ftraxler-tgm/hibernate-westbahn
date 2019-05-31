@@ -45,7 +45,8 @@ public class Benutzer {
 	@Transient
 	private Ticket tickets;
 
-	@OneToOne
+	@OneToMany
+	@OrderColumn
 	private Reservierung[] reservierungen;
 
 

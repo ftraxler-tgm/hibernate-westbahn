@@ -14,6 +14,10 @@ Um das Projekt als gradle Projekt zu initialisieren führen wir folgendes aus:
 ```bash
 gradle idea
 ```
+Das Programm startet man mit:
+```bash
+gradle run
+```
 
 ## Implementierung
 
@@ -71,9 +75,9 @@ private Long ID;
 private String vorName;
 ```
 
-* @Id Daher weiß der EntityManager, dass es sich um eine ID handelt
+* @Id Daher weiß der EntityManager, dass es sich um eine ID(Primary Key) handelt
 * @GeneratedValue Damit sich der Wert der ID vortlaufend erhöht
-* @Column Die Bezeichnung der Spalte in der DB
+* @Column Die Bezeichnung der Spalte in der DB(Wenn man den Namen in der DB ändern möchte ansonsten braucht man die Annotation eigentlich nicht.)
 * @Size Richtlinien für den String in dem Code darüber zum Beispiel mindestens 2 Zeichen lang und maximal 15 lang.
 
 Für folgende Klassen die **Entity** Annotationen hinzufügen:
@@ -90,3 +94,4 @@ Für folgende Klassen die **Entity** Annotationen hinzufügen:
 
 
 ## Quellen
+* [XML-Mapping(Query)](https://memorynotfound.com/hibernate-jpa-named-query-xml-annotation-example/)
