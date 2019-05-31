@@ -51,7 +51,7 @@ public class Main {
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
 			log.setLevel(Level.OFF);
 			task02();
-			//task02a();
+			task02a();
 			//task02b();
 			//task02c();
 			log.setLevel(Level.ALL);
@@ -109,7 +109,7 @@ public class Main {
 			Benutzer ben=null;
 			if(b instanceof Benutzer) {
 				ben = (Benutzer) b;
-				System.out.println("Benutzer: "+ben);
+				System.out.println("Benutzer: "+ben.toString());
 			}
 
 		}

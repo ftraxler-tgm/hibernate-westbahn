@@ -10,12 +10,14 @@ public abstract class Ticket {
 	@Column(name="ID")
 	protected Long ID;
 
-	@OneToOne
+	@OneToMany
 	@Column(name = "strecke")
 	protected Strecke strecke;
 
-	@OneToOne
+	@Transient
 	@Column(name="zahlung")
 	protected Zahlung zahlung;
+
+
 
 }
