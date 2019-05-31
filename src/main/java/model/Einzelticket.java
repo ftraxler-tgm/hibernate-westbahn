@@ -14,4 +14,20 @@ public class Einzelticket extends Ticket {
 	@Column(name="ticketOption")
 	private TicketOption ticketOption;
 
+
+	public Einzelticket() {
+
+	}
+
+	public Einzelticket(TicketOption ticketOption) {
+		this.ticketOption = ticketOption;
+	}
+
+	public TicketOption getTicketOption() {
+		return ticketOption;
+	}
+
+	public void setTicketOption(TicketOption ticketOption) {
+		this.ticketOption = ticketOption;
+	}
 }
