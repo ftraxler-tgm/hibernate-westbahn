@@ -31,4 +31,14 @@ public class Einzelticket extends Ticket {
 	public void setTicketOption(TicketOption ticketOption) {
 		this.ticketOption = ticketOption;
 	}
+
+	@Override
+	public String toString() {
+		return "Einzelticket{" +
+				"ticketOption=" + ticketOption +
+				", ID=" + ID +
+				", strecke=" + strecke +
+				", zahlung=" + zahlung +
+				'}';
+	}
 }

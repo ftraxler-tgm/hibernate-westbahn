@@ -54,7 +54,7 @@ public class Main {
 			task02();
 			task02a();
 			//task02b();
-			//task02c();
+			task02c();
 			task03(entitymanager);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -85,17 +85,6 @@ public class Main {
 
 
 
-		List<Ticket> list15 = new ArrayList<Ticket>();
-		list15.add(new Einzelticket());
-		list15.add(new Einzelticket(TicketOption.valueOf("GROSSGEPAECK")));
-		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("WOCHENKARTE")));
-		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("MONATSKARTE")));
-		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("JAHRESKARTE")));
-
-		for (Ticket t: list15)
-			em.persist(t);
-
-		em.flush();
 
 
 		List<Benutzer> list2 = new ArrayList<Benutzer>();
@@ -134,6 +123,17 @@ public class Main {
 		for(Strecke str:list4)
 			em.persist(str);
 		em.flush();
+
+		List<Ticket> list6 = new ArrayList<Ticket>();
+		list6.add(new Einzelticket(list4.get(2),new Maestro(),null));
+		list6.add(new Einzelticket(list4.get(1),new Kreditkarte(),null));
+		list6.add(new Einzelticket(list4.get(3),new Kreditkarte(),null));
+		list6.add(new Einzelticket(list4.get(1),new Maestro(),null));
+		for (Ticket t: list6)
+			em.persist(t);
+
+		em.flush();
+
 
 
 		List<Reservierung> list5 = new ArrayList<Reservierung>();
@@ -239,6 +239,37 @@ public class Main {
 	}
 
 	public static void task02c() throws ParseException {
+
+
+		List<?> l2;
+		Query q2 = entitymanager.createNamedQuery("Ticket.getAll");
+		l2 = q2.getResultList();
+		for (Object r: l2) {
+			Ticket ticket=null;
+			if(r instanceof Ticket){
+				ticket= (Ticket) r;
+				log.info(ticket.toString());
+
+			}
+
+		}
+
+		List<?> l;
+		Query q = entitymanager.createNamedQuery("Ticket.getReservation");
+		q.setParameter("sname","WienHbf");
+		q.setParameter("ename","Linz-Ost");
+		l = q.getResultList();
+		System.out.println(l.size());
+		//System.out.println(l3.toString());
+		for (Object r: l) {
+			Ticket ticket=null;
+			if(r instanceof Ticket){
+				ticket= (Ticket) r;
+				log.info(ticket.toString());
+
+			}
+
+		}
 	}
 
 	public static void task03(EntityManager em) {

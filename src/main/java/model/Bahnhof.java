@@ -116,4 +116,15 @@ public class Bahnhof {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Bahnhof{" +
+				"ID=" + ID +
+				", name='" + name + '\'' +
+				", absPreisEntfernung=" + absPreisEntfernung +
+				", absKmEntfernung=" + absKmEntfernung +
+				", absZeitEntfernung=" + absZeitEntfernung +
+				", kopfBahnhof=" + kopfBahnhof +
+				'}';
+	}
 }

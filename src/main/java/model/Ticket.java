@@ -3,7 +3,8 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@NamedQueries({@NamedQuery(name="Ticket.getAll",query="SELECT b from Ticket b")})
+@NamedQueries({@NamedQuery(name="Ticket.getAll",query="SELECT b from Ticket b"),@NamedQuery(name="Ticket.getReservation",query = "select b from Ticket b where b.strecke.start.name= :sname and b.strecke.ende.name= :ename")})
+
 public abstract class Ticket {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
