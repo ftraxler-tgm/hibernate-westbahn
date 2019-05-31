@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+        http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" version="1.0">
+
+
+
+    <entity class="model.Reservierung" name="Reservierung" access="FIELD">
+
+        <attributes>
+            <id name="ID">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+
+            <basic name="datum" optional="false">
+                <column length="32"/>
+            </basic>
+
+            <basic name="praemienMeilenBonus" optional="false">
+
+                <column length="32"/>
+
+            </basic>
+
+            <basic name="preis" optional="false">
+
+                <column length="32"/>
+
+            </basic>
+
+            <basic name="status">
+
+                <column length="8"/>
+
+                <enumerated>STRING</enumerated>
+
+            </basic>
+
+            <one-to-one name="zug"/>
+            <one-to-one name="strecke" />
+            <one-to-one name="benutzer" />
+            <transient name="zahlung" />
+
+        </attributes>
+        <named-query name="">
+            <query></query>
+        </named-query>
+
+    </entity>
+
+</entity-mappings>
