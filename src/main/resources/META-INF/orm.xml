@@ -42,9 +42,9 @@
 
             </basic>
 
-            <one-to-one name="zug"/>
-            <one-to-one name="strecke" />
-            <one-to-one name="benutzer" />
+            <many-to-one name="zug"/>
+            <many-to-one name="strecke" />
+            <many-to-one name="benutzer" />
             <transient name="zahlung" />
 
         </attributes>

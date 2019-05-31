@@ -82,14 +82,13 @@ public class Main {
 		em.flush();
 
 
-
 		List<Benutzer> list2 = new ArrayList<Benutzer>();
 
-		list2.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234"));
-		list2.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234"));
-		list2.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234"));
-		list2.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234"));
-		list2.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234"));
+		list2.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
+		list2.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234","4321",12L,null,null));
+		list2.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234","4321",12L,null,null));
+		list2.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234","4321",12L,null,null));
+		list2.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234","4321",12L,null,null));
 
 		for(Benutzer b:list2)
 			em.persist(b);
