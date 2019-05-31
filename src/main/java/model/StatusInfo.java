@@ -2,7 +2,6 @@ package model;
 
 
 public enum StatusInfo {
-
 	;
 
 	public int DELAYED;

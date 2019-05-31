@@ -82,6 +82,22 @@ public class Main {
 		em.flush();
 
 
+
+
+
+		List<Ticket> list15 = new ArrayList<Ticket>();
+		list15.add(new Einzelticket());
+		list15.add(new Einzelticket(TicketOption.valueOf("GROSSGEPAECK")));
+		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("WOCHENKARTE")));
+		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("MONATSKARTE")));
+		list15.add(new Zeitkarte(new Date(),ZeitkartenTyp.valueOf("JAHRESKARTE")));
+
+		for (Ticket t: list15)
+			em.persist(t);
+
+		em.flush();
+
+
 		List<Benutzer> list2 = new ArrayList<Benutzer>();
 
 		list2.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
@@ -139,25 +155,7 @@ public class Main {
 	}
 
 	public static void task01() throws ParseException, InterruptedException {
-	}
 
-	public static <T> void task02() throws ParseException {
-		Query q = entitymanager.createNamedQuery("Bahnhof.getAll");
-
-		List<?> l = q.getResultList();
-
-		for (Object b : l) {
-			Bahnhof bhf = null;
-			if (b instanceof Bahnhof) {
-				bhf = (Bahnhof) b;
-				log.info("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
-			}
-		}
-
-
-	}
-
-	public static void task02a() throws ParseException {
 		Query q = entitymanager.createNamedQuery("Benutzer.getAll");
 
 		List<?> l = q.getResultList();
@@ -184,13 +182,35 @@ public class Main {
 
 		}
 
-		List<?> l3;
-		Query q3 = entitymanager.createNamedQuery("Reservierung.getBenutzer");
-		q3.setParameter("eMail","ftraxler@student.tgm.ac.at");
-		l3 = q3.getResultList();
-		for (Object r: l3) {
+	}
+
+	public static <T> void task02() throws ParseException {
+		Query q = entitymanager.createNamedQuery("Bahnhof.getAll");
+
+		List<?> l = q.getResultList();
+
+		for (Object b : l) {
+			Bahnhof bhf = null;
+			if (b instanceof Bahnhof) {
+				bhf = (Bahnhof) b;
+				log.info("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
+			}
+		}
+
+
+	}
+
+	public static void task02a() throws ParseException {
+
+		List<?> l;
+		Query q = entitymanager.createNamedQuery("Reservierung.getBenutzer");
+		q.setParameter("eMail","ftraxler@student.tgm.ac.at");
+		l = q.getResultList();
+		System.out.println(l.size());
+		//System.out.println(l3.toString());
+		for (Object r: l) {
 			Reservierung reservierung=null;
-			if(r instanceof Benutzer){
+			if(r instanceof Reservierung){
 				reservierung= (Reservierung) r;
 				log.info(reservierung.toString());
 
@@ -200,6 +220,22 @@ public class Main {
 	}
 
 	public static void task02b() throws ParseException {
+		List<?> l;
+		Query q = entitymanager.createNamedQuery("Reservierung.getBenutzer");
+		q.setParameter("eMail","ftraxler@student.tgm.ac.at");
+		l = q.getResultList();
+		System.out.println(l.size());
+		//System.out.println(l3.toString());
+		for (Object r: l) {
+			Reservierung reservierung=null;
+			if(r instanceof Reservierung){
+				reservierung= (Reservierung) r;
+				log.info(reservierung.toString());
+
+			}
+
+		}
+
 	}
 
 	public static void task02c() throws ParseException {

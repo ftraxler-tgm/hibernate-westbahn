@@ -1,22 +1,23 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 
 @Entity
 @NamedQueries({@NamedQuery(name="Einzelticket.getAll",query="SELECT b from Einzelticket b")})
 public class Einzelticket extends Ticket {
 
 
-	@Column(name="ticketOption")
+	@Enumerated
 	private TicketOption ticketOption;
 
 
 	public Einzelticket() {
 
+	}
+	public Einzelticket(Strecke strecke, Zahlung zahlung,TicketOption ticketOption){
+		super(strecke,zahlung);
+		this.ticketOption=ticketOption;
 	}
 
 	public Einzelticket(TicketOption ticketOption) {
