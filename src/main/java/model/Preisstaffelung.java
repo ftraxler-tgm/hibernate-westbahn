@@ -32,7 +32,7 @@ public class Preisstaffelung {
 		return null;
 	}
 
-	private Preisstaffelung() {
+	public Preisstaffelung() {
 
 	}
 

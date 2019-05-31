@@ -44,9 +44,7 @@
             <transient name="zahlung" />
 
         </attributes>
-        <named-query name="">
-            <query></query>
-        </named-query>
+
 
     </entity>
 
