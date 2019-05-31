@@ -31,8 +31,16 @@ public class Reservierung {
 
 	private Zahlung zahlung;
 
-	protected Reservierung(){}
+	public Reservierung(){}
 
+	public Reservierung(Date datum, StatusInfo status, Zug zug, Strecke strecke, Benutzer benutzer, Zahlung zahlung) {
+		this.datum = datum;
+		this.status = status;
+		this.zug = zug;
+		this.strecke = strecke;
+		this.benutzer = benutzer;
+		this.zahlung = zahlung;
+	}
 
 	public Long getID() {
 		return ID;
@@ -104,5 +112,20 @@ public class Reservierung {
 
 	public void setZahlung(Zahlung zahlung) {
 		this.zahlung = zahlung;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservierung{" +
+				"ID=" + ID +
+				", datum=" + datum +
+				", praemienMeilenBonus=" + praemienMeilenBonus +
+				", preis=" + preis +
+				", status=" + status +
+				", zug=" + zug +
+				", strecke=" + strecke +
+				", benutzer=" + benutzer +
+				", zahlung=" + zahlung +
+				'}';
 	}
 }

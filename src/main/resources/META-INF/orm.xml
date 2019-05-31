@@ -4,10 +4,11 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
         http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" version="1.0">
+    <named-query name="Reservierung.getAll">
+        <query>SELECT r FROM Reservierung r</query>
+    </named-query>
 
-
-
-    <entity class="model.Reservierung" name="Reservierung" access="FIELD">
+    <entity class="model.Reservierung" name="Reservierung">
 
         <attributes>
             <id name="ID">

@@ -2,6 +2,7 @@ package main;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +96,30 @@ public class Main {
 			em.persist(b);
 		em.flush();
 
+
+		List<Zug> list3 = new ArrayList<Zug>();
+
+		list3.add(new Zug(new Date(),150,10,5,list.get(0),list.get(1)));
+		list3.add(new Zug(new Date(),200,15,10,list.get(1),list.get(2)));
+		list3.add(new Zug(new Date(),80,6,3,list.get(1),list.get(0)));
+		list3.add(new Zug(new Date(),500,25,20,list.get(3),list.get(1)));
+		list3.add(new Zug(new Date(),800,30,25,list.get(0),list.get(1)));
+		list3.add(new Zug(new Date(),50,10,5,list.get(0),list.get(1)));
+
+		for(Zug z:list3)
+			em.persist(z);
+		em.flush();
+
+
+
+		Strecke strecke = new Strecke();
+		Zahlung zahlung = new Maestro();
+
+
+		Reservierung rv = new Reservierung(new Date(),null,null,null,list2.get(0),zahlung);
+		em.persist(rv);
+		em.flush();
+
 		em.getTransaction().commit();
 	}
 
@@ -113,6 +138,8 @@ public class Main {
 				System.out.println("Bahnhof: " + bhf.getName()+" ID:"+bhf.getID());
 			}
 		}
+
+
 	}
 
 	public static void task02a() throws ParseException {
@@ -125,6 +152,19 @@ public class Main {
 			if(b instanceof Benutzer) {
 				ben = (Benutzer) b;
 				System.out.println(ben.toString());
+			}
+
+		}
+
+		List<?> l2;
+		Query q2 = entitymanager.createNamedQuery("Reservierung.getAll");
+		l2 = q2.getResultList();
+		for (Object r: l2) {
+			Reservierung reservierung=null;
+			if(r instanceof Reservierung){
+				reservierung= (Reservierung) r;
+				System.out.println(reservierung.toString());
+
 			}
 
 		}
