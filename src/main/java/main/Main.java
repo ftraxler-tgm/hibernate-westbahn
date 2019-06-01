@@ -36,7 +36,7 @@ public class Main {
 	static SimpleDateFormat timeForm = new SimpleDateFormat("dd.MM.yyyy mm:hh");
 
 
-	private List<Bahnhof> bahnhoefe;
+
 
 
 	private Main() {
@@ -55,9 +55,9 @@ public class Main {
 			task01();
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
 			log.setLevel(Level.INFO);
-			task02();
+			//task02();
 			task02a();
-			//task02b();
+			task02b();
 			task02c();
 			task03(entitymanager);
 		} catch (ParseException e) {
@@ -74,14 +74,14 @@ public class Main {
 
 	public static void fillDB(EntityManager em) throws ParseException {
 		em.getTransaction().begin();
-		List<Bahnhof> list = new ArrayList<Bahnhof>();
-		list.add(new Bahnhof("WienHbf", 0, 0, 0, true));
-		list.add(new Bahnhof("SalzburgHbf", 20, 60, 120, true));
-		list.add(new Bahnhof("Amstetten", 40, 124, 169, false));
-		list.add(new Bahnhof("Linz-Ost", 140, 320, 250, false));
-		list.add(new Bahnhof("Huetteldorf", 3, 5, 19, false));
-		list.add(new Bahnhof("Wels-Zentrum", 102, 400, 250, true));
-		for (Bahnhof b : list)
+		List<Bahnhof> bahnhoefe = new ArrayList<Bahnhof>();
+		bahnhoefe.add(new Bahnhof("WienHbf", 0, 0, 0, true));
+		bahnhoefe.add(new Bahnhof("SalzburgHbf", 20, 60, 120, true));
+		bahnhoefe.add(new Bahnhof("Amstetten", 40, 124, 169, false));
+		bahnhoefe.add(new Bahnhof("Linz-Ost", 140, 320, 250, false));
+		bahnhoefe.add(new Bahnhof("Huetteldorf", 3, 5, 19, false));
+		bahnhoefe.add(new Bahnhof("Wels-Zentrum", 102, 400, 250, true));
+		for (Bahnhof b : bahnhoefe)
 			em.persist(b);
 		em.flush();
 
@@ -89,65 +89,68 @@ public class Main {
 
 
 
-		List<Benutzer> list2 = new ArrayList<Benutzer>();
+		List<Benutzer> benutzer = new ArrayList<Benutzer>();
 
-		list2.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
-		list2.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234","4321",12L,null,null));
-		list2.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234","4321",12L,null,null));
-		list2.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234","4321",12L,null,null));
-		list2.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234","4321",12L,null,null));
 
-		for(Benutzer b:list2)
+		for(Benutzer b:benutzer)
 			em.persist(b);
 		em.flush();
 
 
-		List<Zug> list3 = new ArrayList<Zug>();
+		List<Zug> zuege = new ArrayList<Zug>();
 
-		list3.add(new Zug(new Date(),150,10,5,list.get(0),list.get(1)));
-		list3.add(new Zug(new Date(),200,15,10,list.get(1),list.get(2)));
-		list3.add(new Zug(new Date(),80,6,3,list.get(1),list.get(0)));
-		list3.add(new Zug(new Date(),500,25,20,list.get(3),list.get(1)));
-		list3.add(new Zug(new Date(),800,30,25,list.get(0),list.get(1)));
-		list3.add(new Zug(new Date(),50,10,5,list.get(4),list.get(0)));
+		zuege.add(new Zug(new Date(),150,10,5,bahnhoefe.get(0),bahnhoefe.get(1)));
+		zuege.add(new Zug(new Date(),200,15,10,bahnhoefe.get(1),bahnhoefe.get(2)));
+		zuege.add(new Zug(new Date(),80,6,3,bahnhoefe.get(1),bahnhoefe.get(0)));
+		zuege.add(new Zug(new Date(),500,25,20,bahnhoefe.get(3),bahnhoefe.get(1)));
+		zuege.add(new Zug(new Date(),800,30,25,bahnhoefe.get(0),bahnhoefe.get(1)));
+		zuege.add(new Zug(new Date(),50,10,5,bahnhoefe.get(4),bahnhoefe.get(0)));
 
-		for(Zug z:list3)
+		for(Zug z:zuege)
 			em.persist(z);
 		em.flush();
 
-		List<Strecke> list4 = new ArrayList<Strecke>();
+		List<Strecke> strecken = new ArrayList<Strecke>();
 
-		list4.add(new Strecke(list.get(0),null,list.get(1)));
-		list4.add(new Strecke(list.get(1),null,list.get(0)));
-		list4.add(new Strecke(list.get(0),list.get(2),list.get(3)));
-		list4.add(new Strecke(list.get(4),null,list.get(0)));
+		strecken.add(new Strecke(bahnhoefe.get(0),null,bahnhoefe.get(1)));//WienHbf-SalzburgHbf
+		strecken.add(new Strecke(bahnhoefe.get(1),null,bahnhoefe.get(0)));//SalzburgHbf-WienHbf
+		strecken.add(new Strecke(bahnhoefe.get(0),bahnhoefe.get(2),bahnhoefe.get(3)));//WienHbf-Linz-Ost
+		strecken.add(new Strecke(bahnhoefe.get(4),null,bahnhoefe.get(0)));
 
-		for(Strecke str:list4)
+		for(Strecke str:strecken)
 			em.persist(str);
 		em.flush();
 
-		List<Ticket> list6 = new ArrayList<Ticket>();
-		list6.add(new Einzelticket(list4.get(2),new Maestro(),null));
-		list6.add(new Einzelticket(list4.get(1),new Kreditkarte(),null));
-		list6.add(new Einzelticket(list4.get(3),new Kreditkarte(),null));
-		list6.add(new Einzelticket(list4.get(1),new Maestro(),null));
-		for (Ticket t: list6)
+		ZeitkartenTyp[] ztyp = ZeitkartenTyp.values();
+
+
+		List<Ticket> tickets = new ArrayList<Ticket>();
+		tickets.add(new Einzelticket(strecken.get(2),new Maestro(),null));
+		tickets.add(new Einzelticket(strecken.get(1),new Kreditkarte(),null));
+		tickets.add(new Einzelticket(strecken.get(3),new Kreditkarte(),null));
+		tickets.add(new Einzelticket(strecken.get(1),new Maestro(),null));
+		for (Ticket t: tickets)
 			em.persist(t);
 
 		em.flush();
 
 
 
-		List<Reservierung> list5 = new ArrayList<Reservierung>();
+		List<Reservierung> reservierungen = new ArrayList<Reservierung>();
 
-		list5.add(new Reservierung(new Date(),null,list3.get(0),list4.get(0),list2.get(0),new Maestro()));
-		list5.add(new Reservierung(new Date(),null,list3.get(2),list4.get(1),list2.get(1),new Kreditkarte()));
-		list5.add(new Reservierung(new Date(),null,list3.get(5),list4.get(0),list2.get(3),new Maestro()));
-		list5.add(new Reservierung(new Date(),null,list3.get(0),list4.get(0),list2.get(2),new Kreditkarte()));
-		list5.add(new Reservierung(new Date(),null,list3.get(2),list4.get(1),list2.get(4),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),null,zuege.get(0),strecken.get(0),benutzer.get(0),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),null,zuege.get(2),strecken.get(1),benutzer.get(1),new Kreditkarte()));
+		reservierungen.add(new Reservierung(new Date(),null,zuege.get(5),strecken.get(0),benutzer.get(3),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),null,zuege.get(0),strecken.get(0),benutzer.get(2),new Kreditkarte()));
+		reservierungen.add(new Reservierung(new Date(),null,zuege.get(2),strecken.get(1),benutzer.get(4),new Maestro()));
 
 
-		for (Reservierung r: list5) {
+		for (Reservierung r: reservierungen) {
 			em.persist(r);
 
 		}
@@ -158,11 +161,13 @@ public class Main {
 
 	public static void task01() throws ParseException, InterruptedException {
 
-		Query q = entitymanager.createNamedQuery("Benutzer.getAll");
+		Query queryBenutzerAll = entitymanager.createNamedQuery("Benutzer.getAll");
 
-		List<?> l = q.getResultList();
 
-		for (Object b: l) {
+		//Alle Benutzer werden aus der DB geholt
+		List<?> benutzerA = queryBenutzerAll.getResultList();
+
+		for (Object b: benutzerA) {
 			Benutzer ben=null;
 			if(b instanceof Benutzer) {
 				ben = (Benutzer) b;
@@ -171,10 +176,12 @@ public class Main {
 
 		}
 
-		List<?> l2;
-		Query q2 = entitymanager.createNamedQuery("Reservierung.getAll");
-		l2 = q2.getResultList();
-		for (Object r: l2) {
+
+		//Alle Reservierungen werden aus der DB geholt
+		List<?> reservierungA;
+		Query queryReservierungAll = entitymanager.createNamedQuery("Reservierung.getAll");
+		reservierungA = queryReservierungAll.getResultList();
+		for (Object r: reservierungA) {
 			Reservierung reservierung=null;
 			if(r instanceof Reservierung){
 				reservierung= (Reservierung) r;
@@ -185,10 +192,12 @@ public class Main {
 		}
 
 
-		List<?> l2;
-		Query q2 = entitymanager.createNamedQuery("Ticket.getAll");
-		l2 = q2.getResultList();
-		for (Object r: l2) {
+
+		//Alle Tickets werden aus der DB geholt
+		List<?> ticketsA;
+		Query queryTicketsAll = entitymanager.createNamedQuery("Ticket.getAll");
+		ticketsA = queryTicketsAll.getResultList();
+		for (Object r: ticketsA) {
 			Ticket ticket=null;
 			if(r instanceof Ticket){
 				ticket= (Ticket) r;
