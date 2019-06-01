@@ -2,7 +2,7 @@ package model;
 
 
 public enum StatusInfo {
-	;
+	TEst1,Test2,Test3;
 
 	public int DELAYED;
 

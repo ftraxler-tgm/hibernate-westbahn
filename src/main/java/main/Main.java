@@ -35,6 +35,10 @@ public class Main {
 	static SimpleDateFormat dateForm = new SimpleDateFormat("dd.MM.yyyy");
 	static SimpleDateFormat timeForm = new SimpleDateFormat("dd.MM.yyyy mm:hh");
 
+
+	private List<Bahnhof> bahnhoefe;
+
+
 	private Main() {
 		super();
 	}
@@ -80,8 +84,6 @@ public class Main {
 		for (Bahnhof b : list)
 			em.persist(b);
 		em.flush();
-
-
 
 
 
@@ -182,6 +184,20 @@ public class Main {
 
 		}
 
+
+		List<?> l2;
+		Query q2 = entitymanager.createNamedQuery("Ticket.getAll");
+		l2 = q2.getResultList();
+		for (Object r: l2) {
+			Ticket ticket=null;
+			if(r instanceof Ticket){
+				ticket= (Ticket) r;
+				log.info(ticket.toString());
+
+			}
+
+		}
+
 	}
 
 	public static <T> void task02() throws ParseException {
@@ -220,44 +236,18 @@ public class Main {
 	}
 
 	public static void task02b() throws ParseException {
-		List<?> l;
-		Query q = entitymanager.createNamedQuery("Reservierung.getBenutzer");
-		q.setParameter("eMail","ftraxler@student.tgm.ac.at");
-		l = q.getResultList();
-		System.out.println(l.size());
-		//System.out.println(l3.toString());
-		for (Object r: l) {
-			Reservierung reservierung=null;
-			if(r instanceof Reservierung){
-				reservierung= (Reservierung) r;
-				log.info(reservierung.toString());
 
-			}
 
-		}
 
 	}
 
 	public static void task02c() throws ParseException {
 
 
-		List<?> l2;
-		Query q2 = entitymanager.createNamedQuery("Ticket.getAll");
-		l2 = q2.getResultList();
-		for (Object r: l2) {
-			Ticket ticket=null;
-			if(r instanceof Ticket){
-				ticket= (Ticket) r;
-				log.info(ticket.toString());
-
-			}
-
-		}
-
 		List<?> l;
 		Query q = entitymanager.createNamedQuery("Ticket.getReservation");
-		q.setParameter("sname","WienHbf");
-		q.setParameter("ename","Linz-Ost");
+		q.setParameter("start","Huetteldorf");
+		q.setParameter("ende","WienHbf");
 		l = q.getResultList();
 		System.out.println(l.size());
 		//System.out.println(l3.toString());
