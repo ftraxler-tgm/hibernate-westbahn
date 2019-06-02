@@ -19,6 +19,8 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 
 import model.*;
+import org.apache.log4j.spi.LoggerFactory;
+import org.hibernate.Hibernate;
 
 public class Main {
 
@@ -44,6 +46,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+
+		Logger.getRootLogger().setLevel(Level.INFO);
 		
 		BasicConfigurator.configure();
 		
@@ -54,8 +58,7 @@ public class Main {
 			fillDB(entitymanager);
 			task01();
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
-			log.setLevel(Level.INFO);
-			//task02();
+			task02();
 			task02a();
 			task02b();
 			task02c();
@@ -126,7 +129,8 @@ public class Main {
 			em.persist(str);
 		em.flush();
 
-		ZeitkartenTyp[] ztyp = ZeitkartenTyp.values();
+		//ZeitkartenTyp ztyp = ZeitkartenTyp.valueOf("WOCHENKARTE");
+		//TicketOption  ttyp = TicketOption.valueOf("FAHRRAD");
 
 
 		List<Ticket> tickets = new ArrayList<Ticket>();
@@ -138,6 +142,7 @@ public class Main {
 			em.persist(t);
 
 		em.flush();
+
 
 
 

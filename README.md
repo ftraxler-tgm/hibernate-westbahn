@@ -19,6 +19,8 @@ Das Programm startet man mit:
 gradle run
 ```
 
+Logging auf Info beschschränken indem in der Main Methode ganze oben folgendes einfügt ```Logger.getRootLogger().setLevel(Level.INFO);```
+
 ## Implementierung
 
 #### PersistentUnit Definition

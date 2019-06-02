@@ -42,7 +42,7 @@ public class Benutzer {
 	private Long verbuchtePraemienMeilen;
 
 
-	@Transient
+	@OneToOne
 	private Ticket tickets;
 
 	@OneToMany
