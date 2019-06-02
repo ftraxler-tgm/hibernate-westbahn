@@ -92,17 +92,7 @@ public class Main {
 
 
 
-		List<Benutzer> benutzer = new ArrayList<Benutzer>();
 
-		benutzer.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
-		benutzer.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234","4321",12L,null,null));
-		benutzer.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234","4321",12L,null,null));
-		benutzer.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234","4321",12L,null,null));
-		benutzer.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234","4321",12L,null,null));
-
-		for(Benutzer b:benutzer)
-			em.persist(b);
-		em.flush();
 
 
 		List<Zug> zuege = new ArrayList<Zug>();
@@ -129,18 +119,31 @@ public class Main {
 			em.persist(str);
 		em.flush();
 
-		//ZeitkartenTyp ztyp = ZeitkartenTyp.valueOf("WOCHENKARTE");
-		//TicketOption  ttyp = TicketOption.valueOf("FAHRRAD");
+
 
 
 		List<Ticket> tickets = new ArrayList<Ticket>();
-		tickets.add(new Einzelticket(strecken.get(2),new Maestro(),null));
+		tickets.add(new Einzelticket(strecken.get(2),new Maestro(),TicketOption.FAHRRAD));
 		tickets.add(new Einzelticket(strecken.get(1),new Kreditkarte(),null));
-		tickets.add(new Einzelticket(strecken.get(3),new Kreditkarte(),null));
+		tickets.add(new Einzelticket(strecken.get(3),new Kreditkarte(),TicketOption.GROSSGEPAECK));
 		tickets.add(new Einzelticket(strecken.get(1),new Maestro(),null));
+		tickets.add(new Zeitkarte(new Date(),ZeitkartenTyp.WOCHENKARTE));
+		tickets.add(new Zeitkarte(new Date(),ZeitkartenTyp.MONATSKARTE));
 		for (Ticket t: tickets)
 			em.persist(t);
 
+		em.flush();
+
+		List<Benutzer> benutzer = new ArrayList<Benutzer>();
+
+		benutzer.add(new Benutzer("Fabian","Traxler","ftraxler@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("David","Kostroun","dkostroun@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Karim","Omar","komar@student.tgm.ac.at","1234","4321",12L,tickets.get(4),null));
+		benutzer.add(new Benutzer("Said","Gagajew","sgagajew@student.tgm.ac.at","1234","4321",12L,null,null));
+		benutzer.add(new Benutzer("Shai","Dzindzihashvili","sdzindzihashvi@student.tgm.ac.at","1234","4321",12L,tickets.get(5),null));
+
+		for(Benutzer b:benutzer)
+			em.persist(b);
 		em.flush();
 
 
