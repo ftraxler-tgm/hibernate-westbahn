@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.Arrays;
 
 @Entity
-@NamedQueries({@NamedQuery(name="Benutzer.getAll",query="SELECT b from Benutzer b")})
+@NamedQueries({@NamedQuery(name="Benutzer.getAll",query="SELECT b from Benutzer b"),@NamedQuery(name="Benutzer.getMonatskarte",query = "select b from Benutzer b where b.tickets.typ=1")})
 public class Benutzer {
 
 

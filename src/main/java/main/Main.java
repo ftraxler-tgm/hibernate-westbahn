@@ -58,7 +58,7 @@ public class Main {
 			fillDB(entitymanager);
 			task01();
 			log.info("Starting \"Working with JPA-QL and the Hibernate Criteria API\" (task2)");
-			task02();
+			//task02();
 			task02a();
 			task02b();
 			task02c();
@@ -151,11 +151,11 @@ public class Main {
 
 		List<Reservierung> reservierungen = new ArrayList<Reservierung>();
 
-		reservierungen.add(new Reservierung(new Date(),null,zuege.get(0),strecken.get(0),benutzer.get(0),new Maestro()));
-		reservierungen.add(new Reservierung(new Date(),null,zuege.get(2),strecken.get(1),benutzer.get(1),new Kreditkarte()));
-		reservierungen.add(new Reservierung(new Date(),null,zuege.get(5),strecken.get(0),benutzer.get(3),new Maestro()));
-		reservierungen.add(new Reservierung(new Date(),null,zuege.get(0),strecken.get(0),benutzer.get(2),new Kreditkarte()));
-		reservierungen.add(new Reservierung(new Date(),null,zuege.get(2),strecken.get(1),benutzer.get(4),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),StatusInfo.ONTIME,zuege.get(0),strecken.get(0),benutzer.get(0),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),StatusInfo.DELAYED,zuege.get(2),strecken.get(1),benutzer.get(1),new Kreditkarte()));
+		reservierungen.add(new Reservierung(new Date(),StatusInfo.CANCELED,zuege.get(5),strecken.get(0),benutzer.get(3),new Maestro()));
+		reservierungen.add(new Reservierung(new Date(),StatusInfo.ONTIME,zuege.get(0),strecken.get(0),benutzer.get(2),new Kreditkarte()));
+		reservierungen.add(new Reservierung(new Date(),StatusInfo.DELAYED,zuege.get(2),strecken.get(1),benutzer.get(4),new Maestro()));
 
 
 		for (Reservierung r: reservierungen) {
@@ -168,6 +168,10 @@ public class Main {
 	}
 
 	public static void task01() throws ParseException, InterruptedException {
+
+
+
+		log.info("\n\n\n\n SELECT ALL \n\n\n\n");
 
 		Query queryBenutzerAll = entitymanager.createNamedQuery("Benutzer.getAll");
 
@@ -218,6 +222,12 @@ public class Main {
 	}
 
 	public static <T> void task02() throws ParseException {
+
+
+		log.info("\n\n\n\n SELECT ALL FROM BAHNHOF\n\n\n\n");
+
+
+		//Bahnhoefe werden aus der DB ausgegeben
 		Query q = entitymanager.createNamedQuery("Bahnhof.getAll");
 
 		List<?> l = q.getResultList();
@@ -235,12 +245,15 @@ public class Main {
 
 	public static void task02a() throws ParseException {
 
+
+		log.info("\n\n\n\n SELECT BENUTZER MIT RESERVIERUNG \n\n\n\n");
+
+
+		//Alle Benutzer mit Reservierung werden ausgegeben
 		List<?> l;
 		Query q = entitymanager.createNamedQuery("Reservierung.getBenutzer");
 		q.setParameter("eMail","ftraxler@student.tgm.ac.at");
 		l = q.getResultList();
-		System.out.println(l.size());
-		//System.out.println(l3.toString());
 		for (Object r: l) {
 			Reservierung reservierung=null;
 			if(r instanceof Reservierung){
@@ -256,18 +269,38 @@ public class Main {
 
 
 
+		//Alle Benutzer mit einer Monatskarte werden ausgegeben
+		log.info("\n\n\n\n SELECT BENUTZER MIT MONATSKARTE \n\n\n\n");
+
+		List<?> l;
+		Query q = entitymanager.createNamedQuery("Benutzer.getMonatskarte");
+		l = q.getResultList();
+		for (Object r: l) {
+			Benutzer benutzer=null;
+			if(r instanceof Benutzer){
+				benutzer= (Benutzer) r;
+				log.info(benutzer.toString());
+
+			}
+
+		}
+
+
+
 	}
 
 	public static void task02c() throws ParseException {
 
 
+		log.info("\n\n\n\n SELECT ALL TICKETS FROM X TO Y WITH NO RESERVATION \n\n\n\n");
+
+
+		//Alle Benutzer mit der Strecke von x nach y mit keiner Reservierung
 		List<?> l;
 		Query q = entitymanager.createNamedQuery("Ticket.getReservation");
 		q.setParameter("start","Huetteldorf");
 		q.setParameter("ende","WienHbf");
 		l = q.getResultList();
-		System.out.println(l.size());
-		//System.out.println(l3.toString());
 		for (Object r: l) {
 			Ticket ticket=null;
 			if(r instanceof Ticket){

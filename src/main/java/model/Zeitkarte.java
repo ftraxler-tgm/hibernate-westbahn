@@ -2,10 +2,7 @@
 package model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,7 +12,7 @@ public class Zeitkarte extends Ticket {
 	@Column(name="gueltigAb")
 	private Date gueltigAb;
 
-	@Column(name="typ")
+	@Enumerated
 	private ZeitkartenTyp typ;
 
 
